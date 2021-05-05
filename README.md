@@ -3,13 +3,13 @@ Jenkins running in a Docker container
 You will need to create your own image.  I suggest using a local registry.  You can see my steps to create a local Portainer Web GUI which has steps to create your own local registry and how to use it.  https://github.com/WingsLikeEagles/Docker_Portainer_setup  
 
 # The Dockerfile needs to be built
-docker built -t localhost:5000/myjenkins:2.277.4-lts .  
+`docker built -t localhost:5000/myjenkins:2.277.4-lts .`  
 
 # Push it to the local registry
-docker push localhost:5000/myjenkins:2.277.4-lts
+`docker push localhost:5000/myjenkins:2.277.4-lts`
 
 # Create a volume to store the config
-docker volume create jenkins_home
+`docker volume create jenkins_home`
 
 # Run it
 `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 --name jenkins localhost:myjenkins:2.277.4-lts`
