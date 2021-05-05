@@ -1,6 +1,6 @@
 # jenkins_docker
 Jenkins running in a Docker container  
-You will need to create your own image.  I suggest using a local registry.  You can see my steps to create a local Portainer Web GUI which has steps to create your own local registry and how to use it.  https://github.com/WingsLikeEagles/Docker_Portainer_setup  
+You will need to create your own image.  I suggest using a local registry (this is not strictly necessary).  You can see my steps to create a local Portainer Web GUI which has steps to create your own local registry and how to use it.  https://github.com/WingsLikeEagles/Docker_Portainer_setup  
 
 # The Dockerfile needs to be built
 `docker built -t localhost:5000/myjenkins:2.277.4-lts .`  
@@ -15,7 +15,7 @@ You will need to create your own image.  I suggest using a local registry.  You 
 `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 --name jenkins localhost:myjenkins:2.277.4-lts`
 
 # Password
-When I tried to log in for the first time the admin account password was not displayed in the console.  This was annoying.  I found that I needed to do the following:  
+When I tried to log in for the first time the admin account password was not displayed in the console (and all the defaults I tried failed).  This was annoying.  I found that I needed to do the following:  
 1. Set the "useSecurity" to "false"  
   a. `docker exec -it jenkins /bin/bash`  
   b. `sed -i 's/useSecurity>true</useSecurity>false</g' /var/jenkins_home/config.xml`  
