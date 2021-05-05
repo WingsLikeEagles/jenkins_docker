@@ -24,17 +24,17 @@ When I tried to log in for the first time the admin account password was not dis
 6. Click "Save" at the bottom.
 7. Create a new account by clicking on "Sign Up" in the upper right corner and entering the requested info.
 8. Set the "useSecurity" back to "true"
-  a. docker exec -it jenkins /bin/bash
-  b. sed -i 's/useSecurity>false</useSecurity>true</g' /var/jenkins_home/config.xml
-  c. exit
+  a. docker exec -it jenkins /bin/bash  
+  b. sed -i 's/useSecurity>false</useSecurity>true</g' /var/jenkins_home/config.xml  
+  c. exit  
 8. Stop and Restart container:
-  a. docker stop jenkins
-  b. docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 --name jenkins localhost:myjenkins:2.277.4-lts
+  a. docker stop jenkins  
+  b. docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 --name jenkins localhost:myjenkins:2.277.4-lts  
 9. Open the Web Gui (http://localhost:8080) and sign in with your new user account
 10. Change authorization to only allow logged in users to make changes to the system:
-  a. On the Dashboard click on "Manage Jenkins"
-  b. Select "Configure Global Security"
-  c. Under "Authorization" select "Logged-in users can do anything"
-  d. Click "Save" at the bottom.
+  a. On the Dashboard click on "Manage Jenkins"  
+  b. Select "Configure Global Security"  
+  c. Under "Authorization" select "Logged-in users can do anything"  
+  d. Click "Save" at the bottom.  
 11. Log out, and log back in to verify
 12. You may want to delete the initial user "jenkins_admin" that was created during the install
