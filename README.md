@@ -17,7 +17,7 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/va
 # Password
 When I tried to log in for the first time the admin account password was not displayed in the console.  This was annoying.  I found that I needed to do the following:  
 1. set the /var/jenkins_home/config.xml line "useSecurity" to "false"
-2. Go into the Web GUI.
+2. Go into the Web GUI. (http://localhost:8080)
 3. On the Dashboard click on "Manage Jenkins"
 4. Select "Configure Global Security"
 5. Select "Security Realm" to "Jenkins' own user database", and check the box next to "Allow uers to sign up".
