@@ -45,6 +45,10 @@ When I tried to log in for the first time the admin account password was not dis
 13. Log out, and log back in to verify
 14. You may want to delete the initial user "jenkins_admin" that was created during the install
 
+# GitLab instance  
+This probably needs to be in it's own Project.  The local host needs to have a HOSTS entry for this to work `127.0.0.1 gitlab.lab.net mylab.net`  
+`docker run --hostname gitlab.lab.net --env GITLAB_OMNIBUS_CONFIG="external_url 'http://my.lab.net/'; gitlab_rails['lfs_enabled'] = true;" -p 443:443 -p 80:80 -p 22:22 --name gitlab --restart always -v gitlab_config:/etc/gitlab -v gitlab_logs:/var/log/gitlab -v gitlab_data:/var/opt/gitlab localhost:5000/gitlab-ce:14.2.1-ce.0`  
+
 # Runner  
 This section needs work as it creates a new runner each time it is run... (maybe remove the `--rm`?)  
 `docker run --rm --name gitlab-runner-01 --network="host" -v gitlab-runner-01-config:/etc/gitlab-runner localhost:5000/gitlab-runner:alpine-v14.2.0 register --non-interactive --name my-runner-01 --url=http://gitlab.localhost.localdomain/ --registration-token $REGISTRATION_TOKEN --executor shell`  
