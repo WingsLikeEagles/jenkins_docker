@@ -46,7 +46,7 @@ When I tried to log in for the first time the admin account password was not dis
 14. You may want to delete the initial user "jenkins_admin" that was created during the install
 
 # Runner  
-This section needs work as it creates a new runner each time it is run... (maybe remove the `--rm`?)
+This section needs work as it creates a new runner each time it is run... (maybe remove the `--rm`?)  
 `docker run --rm --name gitlab-runner-01 --network="host" -v gitlab-runner-01-config:/etc/gitlab-runner localhost:5000/gitlab-runner:alpine-v14.2.0 register --non-interactive --name my-runner-01 --url=http://gitlab.localhost.localdomain/ --registration-token $REGISTRATION_TOKEN --executor shell`  
 `-rm` to destroy the container after it finishes running.  The volumes, config, will persist because of the `-v` command below.
 `--name gitlab-runner-01` this is the name of the container (the gitlab-runner container) we are registering with this command.
